@@ -1,0 +1,21 @@
+<%- include("partial/header") -%>
+
+<h1>home</h1>
+<p><%= homeStartingContent%></p>
+
+<% allPost.forEach((elem)=>{ %>
+  <h1><%= elem.title%></h1>
+  <div class="post-box">
+    <form action="/posts/<%=elem.title%>" method="post">
+      <p><%= elem.content.substring(0,90)+"...."%>
+        <button class="readbtn btnx" type="submit" name="blogID" value="<%=elem._id%>">Read more</button>
+      </p>
+    </form>
+
+    <form action="/delete" method="post">
+        <button class="deletebtn btnx" type="submit" name="deleteBlogID" value="<%=elem._id%>">Delete</button>
+    </form>
+  </div>
+<% }); %>
+
+<%- include("partial/footer") -%>
